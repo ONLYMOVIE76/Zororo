@@ -7,7 +7,7 @@ from pyrogram.errors.exceptions.bad_request_400 import MediaEmpty, PhotoInvalidD
 from Script import script
 import pyrogram
 from database.connections_mdb import active_connection, all_connections, delete_connection, if_active, make_active, make_inactive
-from info import ADMINS, AUTH_CHANNEL, AUTH_USERS, CUSTOM_FILE_CAPTION, AUTH_GROUPS, P_TTI_SHOW_OFF, IMDB, SINGLE_BUTTON, SPELL_CHECK_REPLY, IMDB_TEMPLATE
+from info import ADMINS, AUTH_CHANNEL, AUTH_USERS, CUSTOM_FILE_CAPTION, AUTH_GROUPS, P_TTI_SHOW_OFF, IMDB, SINGLE_BUTTON, SPELL_CHECK_REPLY, IMDB_TEMPLATE, DELETE_TIME
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from pyrogram import Client, filters
 from pyrogram.errors import FloodWait, UserIsBlocked, MessageNotModified, PeerIdInvalid
@@ -987,10 +987,10 @@ async def manual_filters(client, message, text=False):
                 try:
                     if fileid == "None":
                         if btn == "[]":
-                            await client.send_message(group_id, reply_text, disable_web_page_preview=True)
+                            fmsg = await client.send_message(group_id, reply_text, disable_web_page_preview=True)
                         else:
                             button = eval(btn)
-                            await client.send_message(
+                            fmsg = await client.send_message(
                                 group_id, 
                                 reply_text,
                                 disable_web_page_preview=True,
@@ -998,7 +998,7 @@ async def manual_filters(client, message, text=False):
                                 reply_to_message_id = reply_id
                             )
                     elif btn == "[]":
-                        await client.send_cached_media(
+                        fmsg = await client.send_cached_media(
                             group_id,
                             fileid,
                             caption=reply_text or "",
@@ -1006,12 +1006,17 @@ async def manual_filters(client, message, text=False):
                         )
                     else:
                         button = eval(btn) 
-                        await message.reply_cached_media(
+                        fmsg = await message.reply_cached_media(
                             fileid,
                             caption=reply_text or "",
                             reply_markup=InlineKeyboardMarkup(button),
                             reply_to_message_id = reply_id
                         )
+
+                    await asyncio.sleep(DELETE_TIME)
+                    await fmsg.delete()
+                    await message.delete()
+
                 except Exception as e:
                     logger.exception(e)
                 break
