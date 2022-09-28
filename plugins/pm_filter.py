@@ -398,12 +398,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.answer()
     elif query.data == "start":
         buttons = [[
-            InlineKeyboardButton('➕ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘs➕', url='http://t.me/MH_elonmusk_bot?startgroup=true')
+            InlineKeyboardButton('➕ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘs➕', url='http://t.me/Captain_jac_k_sparrow_bot?startgroup=true')
             ],[
             InlineKeyboardButton('⚙️ ʜᴇʟᴘ', callback_data='help'),
             InlineKeyboardButton('😎 ᴀʙᴏᴜᴛ', callback_data='about')
             ],[ 
-            InlineKeyboardButton('📢 ᴜᴘᴅᴀᴛᴇs', url='https://t.me/Rexie_Support')
+            InlineKeyboardButton('🤖 ᴜᴘᴅᴀᴛᴇs', url='https://t.me/Astrong_Bots')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
@@ -442,8 +442,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "about":
         buttons= [[
-            InlineKeyboardButton('🔰 𝖲𝗍𝖺𝗍𝗎𝗌', callback_data='stats'),
-            InlineKeyboardButton('🔖 𝖲𝗈𝗎𝗋𝖼𝖾', callback_data='source'),
+            InlineKeyboardButton('🚀 𝖲𝗍𝖺𝗍𝗎𝗌', callback_data='stats'),
+            InlineKeyboardButton('🛸 𝖲𝗈𝗎𝗋𝖼𝖾', callback_data='source'),
             InlineKeyboardButton('🥺 𝖧𝖾𝗅𝗉', callback_data='help')
             ],[
             InlineKeyboardButton('🏡 𝖧𝗈𝗆𝖾', callback_data='start'),
@@ -481,7 +481,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('ᴄᴏᴜɴᴛʀʏ', callback_data='countryinfo')
             ],[
             InlineKeyboardButton('⬅️ ʙᴀᴄᴋ', callback_data='rexienext'),
-            InlineKeyboardButton('🔰 sᴛᴀᴛᴜs', callback_data='stats'),
+            InlineKeyboardButton('🚀 sᴛᴀᴛᴜs', callback_data='stats'),
             InlineKeyboardButton('🏠 ʜᴏᴍᴇ', callback_data='start')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
@@ -553,9 +553,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "supp":
         buttons = [[
-            InlineKeyboardButton('𝖦𝖱𝖮𝖴𝖯', url='https://t.me/moviehubgroupp')
+            InlineKeyboardButton('𝖦𝖱𝖮𝖴𝖯', url='https://t.me/onlymovie76')
             ],[
-            InlineKeyboardButton('𝖢𝖧𝖠𝖭𝖭𝖤𝖫', url='https://t.me/+T-JgtVsu31E0YmY1')
+            InlineKeyboardButton('𝖢𝖧𝖠𝖭𝖭𝖤𝖫', url='https://t.me/onlyseries76')
             ],[
             InlineKeyboardButton('✖️ 𝖡𝖺𝖼𝗄', callback_data='help')
         ]]
@@ -643,7 +643,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
             InlineKeyboardButton('📀 𝖠𝗎𝗍𝗈 𝖥𝗂𝗅𝗍𝖾𝗋', callback_data='autofilter')
             ],[
-InlineKeyboardButton('🔖 𝖬𝖺𝗇𝗎𝖺𝗅 𝖥𝗂𝗅𝗍𝖾𝗋', callback_data='manualfilter')
+InlineKeyboardButton('🌛 𝖬𝖺𝗇𝗎𝖺𝗅 𝖥𝗂𝗅𝗍𝖾𝗋', callback_data='manualfilter')
 
 ],[
             InlineKeyboardButton('🏡 𝖧𝗈𝗆𝖾', callback_data='help'),
@@ -840,7 +840,7 @@ async def auto_filter(client, msg, spoll=False):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"▫️ {get_size(file.file_size)}▪️{file.file_name}", callback_data=f'files#{file.file_id}'
+                    text=f"{get_size(file.file_size)}{file.file_name}", callback_data=f'files#{file.file_id}'
                 ),
             ]
             for file in files
